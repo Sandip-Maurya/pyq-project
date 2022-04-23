@@ -7,8 +7,23 @@
     <title>PYQ website</title>
 </head>
 <body>
-    <div>
-        Hello World!
-    </div>
+    <h1>
+        Welcome to the flask website!
+    </h1>
+    <table border = 1>
+
+{%  for key, val in  result.items() %}
+
+<tr>
+    <th> {{ key }} </th>
+    <td>
+        {{val}}
+    </td>
+
+</tr>
+
+{%  endfor  %}
+
+</table>
 </body>
 </html>
