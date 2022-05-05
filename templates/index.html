@@ -1,29 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PYQ website</title>
+    <!-- Adding Bulma link for css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Adding mathjax for mathml view  -->
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script async src="{{url_for('static', filename='/js/script.js')}}"></script>
+
+    <title>PYPs</title>
 </head>
+
 <body>
-    <h1>
-        Welcome to the flask website!
-    </h1>
-    <table border = 1>
 
-{%  for key, val in  result.items() %}
+    <div class="container">
 
-<tr>
-    <th> {{ key }} </th>
-    <td>
-        {{val}}
-    </td>
+        <h1 class="py-5 title has-text-centered">View Previous Year Questions</h1>
 
-</tr>
+        <!-- Mathematics Section  -->
 
-{%  endfor  %}
+        <div class="block">
+            <div class="mb-3 columns is-centered">
+                <div class="box has-text-weight-bold">Mathematics</div>
+            </div>
 
-</table>
+            <div class="field">
+
+                <div class="columns ">
+
+                    <div class="column">
+                        <form action="http://localhost:5000/math" method="POST" target="_blank">
+                            <label class="label" for="Select Year">Select a Year</label>
+                    </div>
+                    <div class="column">
+                        <div class="select">
+                            <select name="year" id="yearMath" title="Select Year">
+                                <option value="2021">2021</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="column">
+                        <label class="label" for="examFileNameMath">Select a Paper</label>
+                    </div>
+                    <div class="column">
+                        <div class="select">
+                            <select name="examFileNameMath" id="examFileNameMath" title="Select Any One">
+
+                                <option value="Select Any One">--------</option>
+
+                                {% for item in values[0] %}
+
+                                <option value="{{item}}">{{item}}</option>
+
+                                {% endfor %}
+
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="column ">
+                        <div class="control">
+                            <div class="block ">
+                                <p><input class="button" type="submit" value="View all" /></p>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Chemistry Section  -->
+        <div class="block">
+
+
+                <div class="mb-3 columns is-centered">
+                    <div class="box has-text-weight-bold">Chemistry</div>
+                </div>
+
+                <div class="field">
+                <div class="columns">
+                    <div class="column">
+                        <form action="http://localhost:5000/chemistry" method="POST" target="_blank">
+                            <label class="label" for="Select Year">Select a Year</label>
+                    </div>
+
+                    <div class="column">
+                        <div class="select">
+                            <select name="year" id="yearChem" title="Select Year">
+                                <option value="2021">2021</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <label class="label" for="examFileNameChem">Select a Paper</label>
+                    </div>
+
+                    <div class="column">
+                        <div class="select">
+                            <select name="examFileNameChem" id="examFileNameChem" title="Select Any One">
+                                <option value="Select Any One">--------</option>
+
+                                {% for item in values[1] %}
+
+                                <option value="{{item}}">{{item}}</option>
+
+                                {% endfor %}
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="control ">
+                            <p><input class="button" type="submit" value="View all" /></p>
+                        </div>
+
+                    </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Physics Section -->
+        <!-- <div class="column"> -->
+        <div class="block">
+            <div class="mb-3 columns is-centered">
+                <div class="box has-text-weight-bold">Physics</div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <form action="http://localhost:5000/physics" method="POST" target="_blank">
+
+                        <label class="label" for="Select Year">Select a Year</label>
+                </div>
+
+                <div class="column">
+                    <div class="select">
+                        <select name="year" id="yearPhy" title="Select Year">
+                            <option value="2021">2021</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <label class="label" for="examFileNamePhy">Select a Paper</label>
+                </div>
+
+                <div class="column">
+                    <div class="select">
+                        <select name="examFileNamePhy" id="examFileNamePhy" title="Select Any One">
+
+                            <option value="Select Any One">--------</option>
+
+                            {% for item in values[2] %}
+
+                            <option value="{{item}}">{{item}}</option>
+
+                            {% endfor %}
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <p><input class="button" type="submit" value="View all" /></p>
+                </div>
+            </div>
+
+            </form>
+        </div>
+
+    </div>
+
+    </div>
+
+
+
+
+    </div>
+
+
 </body>
+
 </html>

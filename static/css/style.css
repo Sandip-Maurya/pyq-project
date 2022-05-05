@@ -1,0 +1,17 @@
+.sol{
+    display: none;
+}
+
+.button{
+    text-align: center;
+}
+
+.hidden{
+    display: block;
+}
+
+#top_btns{
+    display: flex;
+    justify-content: space-around;
+
+}

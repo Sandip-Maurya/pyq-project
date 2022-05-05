@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Adding Bulma link for css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <!-- Adding mathjax for mathml view  -->
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script async src="{{url_for('static', filename='/js/script.js')}}"></script>
+
+    <title>JEE Main PYPs</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header section starts  -->
+        <div>
+            <h2 class="py-6 title has-text-centered mathml_text">
+                {{exam_name_math[0]}}
+            </h2>
+        </div>
+
+        <div class="has-text-weight-semibold" id="top_btns">
+            <div class="">
+                <p class="mb-6 py-2 button is-medium is-rounded is-selected is-info" id="show_all_ans_id"
+                    onclick="show_all_ans()">
+                    Show All Answers
+                </p>
+            </div>
+            <div class="">
+                <p class="mb-6 py-2 button is-medium is-rounded is-selected is-primary" id="makepdf_id" onclick="makePDF()">
+                    Make pdf
+                </p>
+            </div>
+        </div>
+        <!-- Header section ends -->
+
+        <!-- Question Starts  -->
+        {% for index in range((result_scq['que_desc'])|length) %}
+
+        <!-- Question Part -->
+        <div class="box">
+            <div class="has-text-weight-medium has-background-white-ter">
+                <div class="columns">
+                    <div class="column is-narrow">Q {{index+1}}.</div>
+                    <div class="column q_text mathml_text">
+                        {{result_scq['que_desc'][index]}}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option Part -->
+            <div class="has-background-white-bis py-2">
+                <div class="columns">
+                    <div class="column is-narrow">(A)</div>
+                    <div class="column a_text mathml_text">
+                        {{result_scq['ans1'][index]}}
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column is-narrow">(B)</div>
+                    <div class="column b_text mathml_text">
+                        {{result_scq['ans2'][index]}}
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column is-narrow">(C)</div>
+                    <div class="column c_text mathml_text">
+                        {{result_scq['ans3'][index]}}
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column is-narrow">(D)</div>
+                    <div class="column d_text mathml_text">
+                        {{result_scq['ans4'][index]}}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Solution part -->
+            <div class="sol pt-2">
+
+                <div class="true_ans">
+                    <div class="columns has-text-weight-bold	">
+                        <div class="column is-narrow">Correct Option:</div>
+                        <div class="column">{{result_scq['true_ans'][index]}}</div>
+                    </div>
+                </div>
+
+                <div class="sol_text">
+                    <div class="columns">
+                        <div class="column is-narrow">Sol.</div>
+                        <div class="column sol_text mathml_text">
+                            {{result_scq['Ref_Text'][index]}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <!--  SCQ Question ends -->
+
+        <!-- Numerical Questions starts  -->
+        <div>
+            <h2 class="py-6 title has-text-centered">{{exam_name_math[1]}}</h2>
+        </div>
+
+        <!-- Question Starts  -->
+        {% for index in range((result_num['que_desc'])|length) %}
+        <div class="box">
+            <!-- Question Part -->
+            <div class="has-text-weight-medium has-background-white-ter">
+                <div class="columns">
+                    <div class="column is-narrow">Q {{ (result_scq['que_desc'])|length + index+1 }}.</div>
+                    <div class="column q_text mathml_text">
+                        {{result_num['que_desc'][index]}}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Answer Part -->
+            <div class="has-background-white-bis py-2">
+                <div class="columns">
+                    <div class="column is-narrow">Ans.</div>
+                    <div class="column">...</div>
+                </div>
+            </div>
+
+            <!-- Solution part -->
+            <div class="sol pt-2">
+
+                <div class="true_ans">
+                    <div class="columns has-text-weight-bold">
+                        <div class="column is-narrow">Answer:</div>
+                        <div class="column">{{result_num['true_ans'][index]}}</div>
+                    </div>
+                </div>
+
+                <div class="sol_text">
+                    <div class="columns">
+                        <div class="column is-narrow">Sol.</div>
+                        <div class="column sol_text mathml_text">
+                            {{result_num['Ref_Text'][index]}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+    </div>
+    <!-- Numerical Questions ends  -->
+</body>
+
+</html>
