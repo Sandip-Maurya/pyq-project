@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Adding Bulma link for css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Adding mathjax for mathml view  -->
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script async src="{{url_for('static', filename='/js/script.js')}}"></script>
+
+    <title>PYPs</title>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="pt-4 pb-6 has-text-centered">
+            <h1 class="has-text-weight-bold is-size-3 has-text-link	">
+                A website for Previous Year Questions
+            </h1>
+            <h2 class="has-text-weight-semibold is-size-5 is-underlined	">
+                Best for JEE Main and NEET Practice
+            </h2>
+
+        </div>
+
+        <div class="field is-grouped">
+            <p class="control is-expanded">
+              <input class="input" type="text" placeholder="Search Your Paper Here">
+            </p>
+            <p class="control">
+              <a class="button is-info">
+                Search
+              </a>
+            </p>
+          </div>
+
+          <div class="pt-4 has-text-centered is-size-5">
+              Or get your <span class="has-text-weight-semibold">Paper</span> by using a <span class="has-text-weight-semibold">Filter</span>
+          </div>
+          <div class="container">
+
+          </div>
+
+          <div class="control py-6 has-text-centered">
+              <form action="">
+
+                <div class="select ">
+                    <select name="" id="" title="Select an Exam">
+                        <option value="">Select an Exam</option>
+                        <option value="">JEE Main</option>
+                        <option value="">JEE Advanced</option>
+                        <option value="">NEET</option>
+                    </select>                 
+                </div>
+                <div class="select mx-6">
+                    <select name="" id="" title="Select a Year">
+                        <option value="">Select a Year</option>
+                        <option value="">2021</option>
+                        <option value="">2020</option>
+                        <option value="">2019</option>
+                        <option value="">2018</option>
+                    </select>                 
+                </div>
+                <div class="select">
+                    <select name="" id="" title="Select a Year">
+                        <option value="">Select your favorite Paper</option>
+                        <option value="">...</option>
+                    </select>                 
+                </div>
+                <button type="submit" class="button has-background-link-dark is-success ml-6">
+                    Go
+                </button>
+              </form>
+          </div>
+        
+
+    </div>
+</body>
+</html>
