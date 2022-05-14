@@ -17,7 +17,7 @@
 
 </head>
 
-<body>
+<body onload="create_exams()">
     <div class="container">
 
         <div class="pt-4 pb-6 has-text-centered">
@@ -49,15 +49,16 @@
 
         </div>
 
-        <div class="control py-6 has-text-centered">
-            <form action="">
+        <div class="control py-6 has-text-centered"> 
+            <!-- onsubmit="filter_form__submit()" -->
+            <form action="http://localhost:7000/view_all" id="filter_form" method="POST" >
 
                 <div class="select ">
-                    <select name="Exam" id="Exam" title="Select an Exam" onchange="filter_function_Exam()">
+                    <select name="Exam" id="Exam" title="Select an Exam" onchange="filter_function_Exam()" >
                         <option value="Select an Exam">Select an Exam</option>
-                        <option value="JEE Main">JEE Main</option>
+                        <!-- <option value="JEE Main">JEE Main</option>
                         <option value="JEE Advanced">JEE Advanced</option>
-                        <option value="NEET">NEET</option>
+                        <option value="NEET">NEET</option> -->
                     </select>
                 </div>
                 <div class="select mx-6">
@@ -71,19 +72,23 @@
                     </select>
                 </div>
                 <div class="select ml-6">
-                    <select name="Subject" id="Subject" title="All Subjects" onchange="filter_function_Subject()" >
+                    <select name="Subject" id="Subject" title="All Subjects" >
                         <option value="All Subjects">All Subjects</option>
                     </select>
                 </div>
 
                 <div class="pt-5 columns">
                     <div class="column">
-                        <button title="Practice" type="submit" class="m-6 button is-rounded has-background-primary-dark is-success ml-6">
+                        <button title="reset" type="reset" id="reset" class="m-6 button is-rounded has-background-danger-dark is-success ml-6">
+                            Reset All Filters
+                        </button>
+                        <button onclick="practice()" id="practice" title="Practice" type="submit" class="m-6 button is-rounded has-background-success-dark is-success ml-6">
                             Go for Practice
                         </button>
-                        <button title="View All" type="submit" class="m-6 button is-rounded has-background-link-dark is-success ml-6">
+                        <button onclick="view()" id="view" title="View All" type="submit" class="m-6 button is-rounded has-background-link-dark is-success ml-6">
                             View All Questions
                         </button>
+
                     </div>
                 </div>
             </form>

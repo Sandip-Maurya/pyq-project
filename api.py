@@ -3,6 +3,12 @@ from __main__ import app, request
 import json
 from  python_scripts.get_dd_data import get_paper_names
 
+@app.route('/get_exams', methods = ['GET'])
+def get_exams():
+   Exams_list = 'JEE Main, NEET, JEE Advanced'.split(', ')
+   Exams = dict (zip (range(len(Exams_list)), Exams_list))
+   return json.dumps(Exams)
+
 
 @app.route('/get_years_from_exam', methods = ['GET'])
 def get_years_from_exam():
@@ -11,7 +17,6 @@ def get_years_from_exam():
    years = '2021 2020 2019 2018'.split(' ')
    print(Exam)
    return json.dumps( dict( zip( range(len(years)), years ) ) )
-
 
 
 @app.route('/get_papers_from_exam_and_year', methods=['GET'])

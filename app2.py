@@ -1,3 +1,4 @@
+# from crypt import methods
 from flask import Flask, render_template, request
 app = Flask(__name__)
 import api
@@ -10,9 +11,11 @@ def index2():
    return render_template('index2.html')
 
 # 2. View Page
-@app.route('/view_all')
+@app.route('/view_all', methods = ['POST'])
 def view_all():
-    return render_template('view_all.html')
+    Exam, Year, Paper, Subject = request.form['Exam'], request.form['Year'], request.form['Paper'], request.form['Subject']
+    filter_data = {'Exam': Exam, 'Year': Year, 'Paper': Paper, 'Subject': Subject}
+    return render_template('view_all.html', filter_data = filter_data)
 
 # 3. Practice Page
 @app.route('/practice')
