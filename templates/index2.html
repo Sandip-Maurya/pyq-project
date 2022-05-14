@@ -11,7 +11,7 @@
     <!-- Adding mathjax for mathml view  -->
     <script type="text/javascript" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
-    <script async src="{{url_for('static', filename='/js/script.js')}}"></script>
+    <script async src="{{url_for('static', filename='/js/script2.js')}}"></script>
 
     <title>PYPs</title>
 
@@ -53,7 +53,7 @@
             <form action="">
 
                 <div class="select ">
-                    <select name="Exam" id="Exam" title="Select an Exam" onchange="get_subjects_from_exam()">
+                    <select name="Exam" id="Exam" title="Select an Exam" onchange="filter_function_Exam()">
                         <option value="Select an Exam">Select an Exam</option>
                         <option value="JEE Main">JEE Main</option>
                         <option value="JEE Advanced">JEE Advanced</option>
@@ -61,24 +61,18 @@
                     </select>
                 </div>
                 <div class="select mx-6">
-                    <select name="Year" id="Year" title="Select a Year">
+                    <select name="Year" id="Year" title="Select a Year" onchange="filter_function_Year()" >
                         <option value="Select a Year">Select a Year</option>
-                        <option value="2021">2021</option>
-                        <option value="2020">2020</option>
-                        <option value="2019">2019</option>
-                        <option value="2018">2018</option>
                     </select>
                 </div>
                 <div class="select">
-                    <select name="Paper" id="Paper" title="Select your favorite Paper">
-                        <option value="Select your favorite Paper">Select your favorite Paper</option>
-                        <option value="Please Select an Exam and a Year First">Please Select an Exam and a Year First</option>
+                    <select name="Paper" id="Paper" title="Select your favorite Paper" onchange="filter_function_Paper()" >
+                        <option value="Select a Paper">Select your favorite Paper</option>
                     </select>
                 </div>
                 <div class="select ml-6">
-                    <select name="Subject" id="Subject" title="Select one or all Subjects">
+                    <select name="Subject" id="Subject" title="All Subjects" onchange="filter_function_Subject()" >
                         <option value="All Subjects">All Subjects</option>
-                        <option value="Please Select an Exam First" id="select_exam_msg">Please Select an Exam First</option>
                     </select>
                 </div>
 
@@ -98,6 +92,8 @@
 
 
     </div>
+
+
 </body>
 
 </html>
