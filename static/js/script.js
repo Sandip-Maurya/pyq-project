@@ -25,3 +25,11 @@ function makePDF() {
     show_all_ans_btn_elm.setAttribute('style', 'display:none');
     window.print();
 }
+
+// test().then( () => { add_script_for_mathml(); })
+
+// document.getElementById('btn').onclick()
+// window.addEventListener("load", function(){ add_script_for_mathml() } )
+
+// test_elm.addEventListener('onload', add_script_for_mathml)
+

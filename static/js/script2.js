@@ -37,7 +37,8 @@ function create_exams(){
         let response = await fetch(`${window.location.href}/get_exams`);
         let Exam_response_json = await response.json();
         let Exams = Object.values(Exam_response_json);
-        Exams.forEach(Exam => {create_options(Exam_elm, Exam)});
+        // Exams.forEach(Exam => {create_options(Exam_elm, Exam)});
+        for(let Exam of Exams){create_options(Exam_elm, Exam)};
         
         return 
     }
@@ -107,6 +108,7 @@ function filter_function_Paper(){
             let subject_datas = Object.values(subject_response_json);
             // console.log(subject_datas)
             subject_datas.forEach(subject_data => {create_options(Subject_elm, subject_data)});
+            return
         }
         add_dd_values_in_subject();
     } 
@@ -122,5 +124,5 @@ function practice() {
     filter_form_elm.setAttribute('action', 'http://localhost:7000/practice')
 }
 function view() {
-    filter_form_elm.setAttribute('action', 'http://localhost:7000/view')
+    filter_form_elm.setAttribute('action', 'http://localhost:7000/view_all')
 }

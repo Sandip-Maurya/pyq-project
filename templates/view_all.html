@@ -4,12 +4,166 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <!-- Adding Bulma link for css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <!-- Adding mathjax for mathml view  -->
+
+    <script  src="{{url_for('static', filename='/js/mathml_data.js')}}"></script>
+    <script  src="{{url_for('static', filename='/js/script2.js')}}"></script>
+
+    <title>JEE Main PYPs</title>
+
 </head>
-<body>
-    <h1>
-        view_all page
-    </h1>
-    Exam, Year, Paper, Subject = {{filter_data}}
+<body onload="test()">
+
+
+
+    <div class="container">
+        <!-- Header section starts  -->
+        <div>
+            <h2 class="py-6 title has-text-centered mathml_text">
+                {exam_name}
+            </h2>
+        </div>
+
+        <div class="has-text-weight-semibold" id="top_btns">
+            <div class="">
+                <p class="mb-6 py-2 button is-medium is-rounded has-background-info-dark has-text-white" id="show_all_ans_id"
+                    onclick="show_all_ans()">
+                    Show All Answers
+                </p>
+            </div>
+            <div class="">
+                <p class="mb-6 py-2 button is-medium is-rounded has-background-success-dark has-text-white" id="makepdf_id" onclick="makePDF()">
+                    Make pdf
+                </p>
+            </div>
+        </div>
+        <!-- Header section ends -->
+
+        <!-- Question Starts  -->
+        <div>
+            <h3 class="py-6 has-text-weight-bold is-size-5">Section-A: Single Choice Questions</h3>
+        </div>
+        <!-- Question Part -->
+        <div class="box">
+            <div class="has-text-black has-background-white">
+                <div class="columns">
+                    <div class="column is-narrow">{Q_no}.</div>
+                    <div class="column q_text mathml_text">
+                        {q_text}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option Part -->
+            <div class="has-background-white has-text-black py-2">
+                <div class="columns">
+                    <div class="column is-narrow">(A)</div>
+                    <div class="column a_text mathml_text">
+                        {o_A_text}
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column is-narrow">(B)</div>
+                    <div class="column b_text mathml_text">
+                        {o_B_text} 
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column is-narrow">(C)</div>
+                    <div class="column c_text mathml_text">
+                        {o_C_text} 
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column is-narrow">(D)</div>
+                    <div class="column d_text mathml_text">
+                        {o_D_text} 
+                    </div>
+                </div>
+            </div>
+
+            <!-- Solution part -->
+            <div class="sol pt-2">
+
+                <div class="true_ans">
+                    <div class="columns has-text-weight-bold">
+                        <div class="column is-narrow">Correct Option:</div>
+                        <div class="column">{corr_o_text}</div>
+                    </div>
+                </div>
+
+                <div class="sol_text">
+                    <div class="columns">
+                        <div class="column is-narrow">Sol.</div>
+                        <div class="column sol_text mathml_text">
+                            {sol_text} 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  SCQ Question ends -->
+
+        <!-- Numerical Questions starts  -->
+        <div>
+            <!-- <h3 class="py-6 title has-text-centered">Section-B: Numerical Questions</h3> -->
+            <h3 class="py-6 has-text-weight-bold is-size-5">Section-B: Numerical Questions</h3>
+
+        </div>
+
+        <!-- Question Starts  -->
+        <div class="box">
+            <!-- Question Part -->
+            <div class="has-text-weight-medium has-background-white-ter">
+                <div class="columns">
+                    <div class="column is-narrow">{Q_no}.</div>
+                    <div class="column q_text mathml_text">
+                        {q_text}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Answer Part -->
+            <div class="has-background-white-bis py-2">
+                <div class="columns">
+                    <div class="column is-narrow">Ans.</div>
+                    <div class="column">...</div>
+                </div>
+            </div>
+
+            <!-- Solution part -->
+            <div class="sol pt-2">
+
+                <div class="true_ans">
+                    <div class="columns has-text-weight-bold">
+                        <div class="column is-narrow">Answer:</div>
+                        <div class="column">{corr_ans_text}</div>
+                    </div>
+                </div>
+
+                <div class="sol_text">
+                    <div class="columns">
+                        <div class="column is-narrow">Sol.</div>
+                        <div class="column sol_text mathml_text">
+                            {sol_text}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- Numerical Questions ends  -->
+
+    <div class="box">
+        <div id="test" >
+
+        </div>
+    </div>
+
 </body>
 </html>

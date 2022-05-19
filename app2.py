@@ -1,5 +1,6 @@
-# from crypt import methods
-from flask import Flask, render_template, request
+import json
+from flask import Flask, render_template, request, url_for
+from python_scripts.get_data import get_paper_data_json_main
 app = Flask(__name__)
 import api
 
@@ -13,15 +14,24 @@ def index2():
 # 2. View Page
 @app.route('/view_all', methods = ['POST'])
 def view_all():
-    Exam, Year, Paper, Subject = request.form['Exam'], request.form['Year'], request.form['Paper'], request.form['Subject']
-    filter_data = {'Exam': Exam, 'Year': Year, 'Paper': Paper, 'Subject': Subject}
-    return render_template('view_all.html', filter_data = filter_data)
+    global Paper_view
+    global Subject_view
+    Paper_view = request.form['Paper']
+    Subject_view = request.form['Subject']    
+    return render_template('view_all.html')
 
 # 3. Practice Page
-@app.route('/practice')
+@app.route('/practice', methods=['POST'])
 def practice():
-    return render_template('practice.html')
+    Exam, Year, Paper, Subject = request.form['Exam'], request.form['Year'], request.form['Paper'], request.form['Subject']
+    filter_data = {'Exam': Exam, 'Year': Year, 'Paper': Paper, 'Subject': Subject}
+    return render_template('practice.html', filter_data = filter_data)
 
+# API for sending paper data for 
+@app.route('/get_paper_data_view', methods=['POST'])
+def get_paper_data():
+    return get_paper_data_json_main(Paper_view, Subject_view)
+    # return json.dumps ({'key':'value'})
 
 if __name__ == '__main__':
    app.run(debug = True, port=7000)
